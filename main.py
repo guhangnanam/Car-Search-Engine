@@ -11,6 +11,13 @@ import pandas as pd
 # Drive Wheels
 # Engine Type
 
+
+# Breakdown:
+# Two different search algorithm's narrow the large dataset into a smaller list
+#
+
+
+
 def ternary_search(dataset, user_input):
     # Implement ternary search algorithm
     pass
@@ -19,7 +26,30 @@ def interpolation_search(dataset, user_input):
     # Implement interpolation search algorithm
     pass
 
+
+def search_cars(dataset, user_input):
+    # Search algorithm to find cars that match the user input
+    matching_cars = []
+
+    for index, row in dataset.iterrows():
+        match = True
+
+        # Check each attribute for a match
+        for key, value in user_input.items():
+            if value and str(row[key]).lower() != value.lower():  # Ignore blank values
+                match = False
+                break
+
+        if match:
+            matching_cars.append(row)
+            if len(matching_cars) == 5:
+                break  # Stop when 5 matches are found
+
+    return matching_cars
+
+
 def search_button_click(year_entry, model_entry, mileage_entry, horsepower_entry, body_type_var, algorithm_var,  result_label, dataset):
+    '''
     user_input = {
         "year": year_entry.get(),
         "model": model_entry.get(),
@@ -31,8 +61,9 @@ def search_button_click(year_entry, model_entry, mileage_entry, horsepower_entry
 
     # Determine the selected searching algorithm
     selected_algorithm = algorithm_var.get()
-    print("Called")
-    result_label = "Name"
+    #print("Called")
+    result_text = "Name"  # Initialize result_text with a default value
+
     if selected_algorithm == "Ternary Search":
         result = ternary_search(dataset, user_input)
     elif selected_algorithm == "Interpolation Search":
@@ -40,7 +71,10 @@ def search_button_click(year_entry, model_entry, mileage_entry, horsepower_entry
     else:
         result = "Invalid algorithm selected."
 
-    result_label.config(text=result)
+    result_text = result  # Update result_text with the actual result
+
+    result_label.config(text=result_text)  # Update the text of the result_label
+    '''
 
 def main():
     # Load the dataset
