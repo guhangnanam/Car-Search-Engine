@@ -19,6 +19,6 @@ class Vehicle:
             f"Year To: {self.yearTo}\n"
             f"Trim: {self.trim}\n"
             f"Horsepower: {self.horsepower} HP\n"
-            f"Body Type: {self.body_type}"
+            f"Body Type: {self.body_type}\n"
         )
 
