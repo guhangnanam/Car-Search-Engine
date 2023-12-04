@@ -17,7 +17,16 @@ from Vehicle import Vehicle
 
 # Breakdown:
 # Two different search algorithm's  the large dataset into a smaller list
-#
+# Then Linear search the smaller list to narrow it down further
+# Display data to user (first 9 results)
+
+
+# Tests for convenience:
+# 1. AC, ACE, 1997, 4.9 AT, 260, Cabriolet - Returns 1 car (can remove element to see other results)
+# 2. AC, ACE - Returns 9 cars
+# 3. AC, Cobra - Returns 9 cars
+# 4. Audi R8 - Not a recognized make and model
+# 5. AC, ACE, 2003, 5.2 AT, 235, Sedan - Returns no cars
 
 
 
@@ -201,6 +210,7 @@ def linear_scrub(vehicles, user_input):
             (user_input["body type"] == "Unknown" or user_input["body type"] == "" or user_input["body type"] == vehicle.body_type) and (len(filtered_vehicles) < 9)
             # Add other criteria as needed
         ):
+            # append the vehicle to list
             filtered_vehicles.append(vehicle)
 
     return filtered_vehicles
@@ -218,6 +228,25 @@ def search_button_click(year_entry, model_entry, make_entry, trim_entry, hp_entr
         "body type": body_type_var.get(),
         # Add other specifications
     }
+    if user_input["make"] == "" and user_input["model"] == "":
+        # Clear previous results in result_frame
+        clear_result_frame(result_frame)
+        result_label = tk.Label(result_frame, text="Please enter a make and model")
+        result_label.grid(row=0, column=0, padx=5, pady=5, stick="w")
+        return
+    elif user_input["make"] == "":
+        # Clear previous results in result_frame
+        clear_result_frame(result_frame)
+        result_label = tk.Label(result_frame, text="Please enter a make")
+        result_label.grid(row=0, column=0, padx=5, pady=5, stick="w")
+        return
+    elif user_input["model"] == "":
+        # Clear previous results in result_frame
+        clear_result_frame(result_frame)
+        result_label = tk.Label(result_frame, text="Please enter a model")
+        result_label.grid(row=0, column=0, padx=5, pady=5, stick="w")
+        return
+
 
     dataset = pd.read_csv("cars.csv", low_memory=False)
     # Determine the selected searching algorithm
