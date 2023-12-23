@@ -15,4 +15,4 @@ https://tkdocs.com/tutorial/install.html
 Pull requests are welcome. For major changes however please open up an issue for me to read before approving your change.
 
 ## Details
-User is able to input a make and model of a vehicle and then get multiple possible cars that fit their specified criteria. Criteria can be added or removed to narrow or broaden search range. Utilizes either interpolation and linear search or terneary and linear search (choosable by user). Includes execution time display.
+User is able to input a make and model of a vehicle and then get multiple possible cars that fit their specified criteria. Criteria can be added or removed to narrow or broaden search range. Utilizes either interpolation and linear search or terneary and linear search (choosable by user). Includes execution time display. Here is a link to a walkthrough video I made https://youtu.be/wTcuQtaHJFc
